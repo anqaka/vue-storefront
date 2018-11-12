@@ -1,0 +1,14 @@
+query m2page (
+    $filter: M2BlockFilterInput,
+    $pageSize: Int,
+    $currentPage: Int
+  ) {
+  pages(
+    filter: $filter
+    pageSize: $pageSize
+    currentPage: $currentPage
+  )
+  {
+    hits
+  }
+}

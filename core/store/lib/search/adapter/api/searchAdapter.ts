@@ -170,5 +170,25 @@ export class SearchAdapter {
         return this.handleResult(resp, 'review', start, size)
       }
     })
+
+    this.registerEntityType('m2block', {
+      queryProcessor: (query) => {
+        // function that can modify the query each time before it's being executed
+        return query
+      },
+      resultPorcessor: (resp, start, size) =>  {
+        return this.handleResult(resp, 'm2block', start, size)
+      }
+    })
+
+    this.registerEntityType('m2page', {
+      queryProcessor: (query) => {
+        // function that can modify the query each time before it's being executed
+        return query
+      },
+      resultPorcessor: (resp, start, size) =>  {
+        return this.handleResult(resp, 'm2page', start, size)
+      }
+    })
   }
 }

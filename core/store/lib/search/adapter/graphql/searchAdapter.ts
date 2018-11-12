@@ -169,6 +169,50 @@ export class SearchAdapter {
         }
       }
     })
+    this.registerEntityType('m2block', {
+      gql: './queries/m2blocks.gql',
+      queryProcessor: (query) => {
+        // function that can modify the query each time before it's being executed
+        return query
+      },
+      resultPorcessor: (resp, start, size) =>  {
+        console.info(resp)
+        if (resp === null) {
+          throw new Error('Invalid graphQl result - null not exepcted')
+        }
+        if (resp.hasOwnProperty('data')) {
+          return processESResponseType(resp.data.blocks, start, size)
+        } else {
+          if (resp.error) {
+            throw new Error(JSON.stringify(resp.error))
+          } else {
+            throw new Error('Unknown error with graphQl result in resultPorcessor for entity type \'m2block\'')
+          }
+        }
+      }
+    })
+    this.registerEntityType('m2page', {
+      gql: './queries/m2pages.gql',
+      queryProcessor: (query) => {
+        // function that can modify the query each time before it's being executed
+        return query
+      },
+      resultPorcessor: (resp, start, size) =>  {
+        console.info(resp)
+        if (resp === null) {
+          throw new Error('Invalid graphQl result - null not exepcted')
+        }
+        if (resp.hasOwnProperty('data')) {
+          return processESResponseType(resp.data.pages, start, size)
+        } else {
+          if (resp.error) {
+            throw new Error(JSON.stringify(resp.error))
+          } else {
+            throw new Error('Unknown error with graphQl result in resultPorcessor for entity type \'m2page\'')
+          }
+        }
+      }
+    })
     this.registerEntityType('category', {
       gql: './queries/categories.gql',
       queryProcessor: (query) => {

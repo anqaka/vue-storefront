@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <h1>Cms content</h1>
+    <magento-cms :identifier="'about_us'" :type="'Page'" :sync="true"/>
+    <magento-cms :identifier="'contact_us'" :type="'Block'" :sync="true"/>
+    <magento-cms :identifier="'footer_links_block'" :type="'Block'" :sync="true"/>
 
     <h2>
       Cms page content
@@ -37,10 +40,12 @@
 
 <script>
 import CmsData from '@vue-storefront/extension-magento2-cms/components/CmsData'
+import MagentoCms from 'theme/components/core/blocks/MagentoCms/MagentoCms'
 
 export default {
   components: {
-    CmsData
+    CmsData,
+    MagentoCms
   }
 }
 </script>
